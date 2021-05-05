@@ -14,7 +14,7 @@ class TransactionCard extends StatelessWidget {
         children: <Widget>[
           Container(
             child: Text(
-              '\$${transaction.ammount}',
+              '\$${transaction.ammount.toStringAsFixed(2)}',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,

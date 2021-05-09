@@ -12,7 +12,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'MyExpenses',
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+        accentColor: Colors.purple,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+          title: TextStyle(
+            fontFamily: 'OpenSans',
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light()
+          .textTheme
+          .copyWith(
+            title: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20
+            ),
+          ),
+        ),
+      ),
       home: MyHomePage(),
     );
   }
@@ -38,16 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void startAddNewTranslation(BuildContext context) {
     showModalBottomSheet(
-        context: context,
-        builder: (bContext) {
-          return GestureDetector(
+      context: context,
+      builder: (bContext) {
+        return GestureDetector(
             onTap: () {},
             behavior: HitTestBehavior.opaque,
-            child: NewTransactions(addTransaction)
-          );
-        },
+            child: NewTransactions(addTransaction));
+      },
       elevation: 5,
-
     );
   }
 
@@ -71,7 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               width: double.infinity,
               child: Card(
-                color: Colors.blue,
                 child: Text('CHART!'),
                 elevation: 5,
               ),
@@ -81,9 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => startAddNewTranslation(context),
-         child: Icon(Icons.add)
-      ),
+          onPressed: () => startAddNewTranslation(context),
+          child: Icon(Icons.add)),
     );
   }
 }

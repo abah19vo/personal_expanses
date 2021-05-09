@@ -10,11 +10,25 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 600,
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return TransactionCard(userTransactions[index]);
-        },
-        itemCount: userTransactions.length,
+      child: userTransactions.isEmpty ?
+          Column(
+            children:<Widget>[
+              
+             Text(
+              'The transaction list is empty',
+              style:Theme.of(context).textTheme.title
+            ), 
+            Image.asset(
+              'assets/images/empty.png',
+               fit: BoxFit.cover
+            ),
+            ],
+          )
+        : ListView.builder(
+          itemBuilder: (context, index) {
+            return TransactionCard(userTransactions[index]);
+          },
+          itemCount: userTransactions.length,
       ),
     );
   }

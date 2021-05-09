@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './transaction.dart';
 
 class TransactionReapository {
-  final List<Transaction> _userTransactions = [
+  final List<Transaction> _userTransactions =[/* 
     Transaction(
       id: "1",
       ammount: 100,
@@ -27,7 +27,7 @@ class TransactionReapository {
       ammount: 90,
       title: 'new hat',
       date: DateTime.now(),
-    ),
+    ),*/
   ];
 
   void addTransaction(String txTitle, double txAmount) {

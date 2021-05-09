@@ -4,8 +4,9 @@ import 'package:intl/intl.dart';
 
 class TransactionCard extends StatelessWidget {
   final Transaction transaction;
-
-  TransactionCard(this.transaction);
+  TransactionCard(
+    this.transaction,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -23,25 +24,20 @@ class TransactionCard extends StatelessWidget {
             ),
             margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Colors.green),
+              border: Border.all(width: 2, color: Colors.green),
             ),
             padding: EdgeInsets.all(10),
           ),
           Column(
-            children:[
+            children: [
               Text(
                 transaction.title,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
+                style: Theme.of(context).textTheme.title,
               ),
               Text(
                 DateFormat.yMMMMd().format(transaction.date),
                 style: TextStyle(
-                  color: Colors.grey,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ],

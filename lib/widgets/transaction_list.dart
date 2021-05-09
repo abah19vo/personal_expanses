@@ -13,7 +13,6 @@ class TransactionList extends StatelessWidget {
       child: userTransactions.isEmpty ?
           Column(
             children:<Widget>[
-              
              Text(
               'The transaction list is empty',
               style:Theme.of(context).textTheme.title

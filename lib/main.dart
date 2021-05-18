@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './widgets/user_transactions.dart';
 import './widgets/new_transactions.dart';
 import './widgets/transaction_list.dart';
 import './models/transaction_reapository.dart';
-import './models/transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -85,7 +83,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
@@ -100,8 +97,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => startAddNewTranslation(context),
-          child: Icon(Icons.add)),
+        onPressed: () => startAddNewTranslation(context),
+        child: Icon(Icons.add)
+      ),
     );
   }
 }

@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
+import './transaction_firebase.dart';
 
 import './transaction.dart';
 
 class TransactionReapository {
-  final List<Transaction> _userTransactions =[
+  TransactionFirebase transactionFirebase = new TransactionFirebase();
+
+  final List<Transaction> _userTransactions = [
     Transaction(
       id: "1",
       ammount: 100,
@@ -31,12 +33,23 @@ class TransactionReapository {
   ];
 
   void addTransaction(String txTitle, double txAmount) {
-    final newTx = Transaction(
-        title: txTitle,
-        ammount: txAmount,
-        date: DateTime.now(),
-        id: DateTime.now().toString());
-    return _userTransactions.add(newTx);
+    try {
+      final newTx = Transaction(
+          title: txTitle,
+          ammount: txAmount,
+          date: DateTime.now(),
+          id: DateTime.now().toString());
+      transactionFirebase
+          .addTransaction(
+            newTx.id,
+            newTx.title,
+            newTx.ammount,
+            newTx.date,
+          ).catchError((error, skTrace) =>throw error);
+      _userTransactions.add(newTx);
+    } catch (e) {
+      throw e;
+    }
   }
 
   void deleteTransaction(Transaction tx) => _userTransactions.remove(tx);
